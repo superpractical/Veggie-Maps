@@ -1,0 +1,129 @@
+body {
+  margin: 0;
+  background-image: url("https://cdn.discordapp.com/attachments/377567989056143363/466047309692796936/20180709_183350.jpg");
+  background-repeat: no-repeat;
+  background-size:  cover;
+  image-rendering: -webkit-optimize-contrast;
+  overflow: hidden;
+  display: block;
+}
+
+.header {
+  background-color: transparent;
+  margin: 100;
+}
+
+.page-title {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 35px;
+  font-weight: bold;
+  text-align: center;
+  width: 40%;
+  margin: 0;
+  padding: 10px;
+  color: white;
+}
+
+.vegan-highlight {
+  color: skyblue;
+}
+
+.search {
+  text-align: center;
+}
+
+.search-title {
+  font-size: 40px;
+  margin: 0;
+  color: white;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.location-input {
+  padding: 10px;
+  font-size: 16px;
+  background-color: transparent;
+  border: 2px solid white;
+  margin: 5px;
+  margin-left: 5px;
+  color: white;
+}
+
+.location-input::placeholder {
+  color: white;
+}
+
+.footer-wrapper {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  font-size: 20px;
+  background-color: transparent;
+}
+
+.footer-title {
+  text-align: left;
+  display: inline;
+  float: left;
+  margin-left: 15px;
+  color: white;
+}
+
+.social-media {
+  display: inline;
+  margin: 20px;
+  float: right;
+}
+
+.fa {
+  font-size: 40px;
+  width: 30px;
+  text-decoration: none;
+}
+
+.fa:hover {
+  opacity: 0.7;
+  color: purple;
+}
+
+/* Twitter */
+.fa-twitter {
+  background: transparent;
+  color: white;
+}
+
+/* Instagram */
+.fa-instagram {
+  background: transparent;
+  color: white;
+}
+
+/* Reddit */
+.fa-reddit {
+  background: transparent;
+  color: white;
+}
+
+#map {
+  height: 68%;
+  width: 50%;
+  right: 50%;
+  left: 25%;
+  bottom: 7%;
+  vertical-align: middle;
+  float: right;
+  position: absolute;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.contact-us {
+  color: white;
+  text-decoration: none;
+}

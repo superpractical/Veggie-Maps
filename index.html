@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Veggie Maps</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="master.css" />
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+  <script>
+
+    var map;
+    var infowindow;
+
+    function initMap() {
+      var input = document.getElementById('location-input');
+      var autocomplete = new google.maps.places.Autocomplete(input);
+      google.maps.event.addListener(autocomplete, 'place_changed', function() {
+          var place = autocomplete.getPlace();
+          console.log(place.formatted_address);
+          console.log(place.url);
+          console.log(place.geometry.location.lat());
+          console.log(place.geometry.location.lng());
+          var lat = place.geometry.location.lat();
+          var lng = place.geometry.location.lng();
+          var pyrmont = {lat: lat, lng: lng};
+
+          map = new google.maps.Map(document.getElementById('map'), {
+          center: pyrmont,
+          zoom: 14
+          });
+
+          infowindow = new google.maps.InfoWindow();
+          var service = new google.maps.places.PlacesService(map);
+          service.nearbySearch({
+          location: pyrmont,
+          radius: 15000,
+          type: ['restaurant']
+          }, callback);
+          })
+
+          function callback(results, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+              createMarker(results[i]);
+          }
+          }
+          }
+
+          function createMarker(place) {
+          var placeLoc = place.geometry.location;
+          var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location
+          });
+
+          google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent(place.name);
+          infowindow.open(map, this);
+          });
+          }
+      };
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7KmMxGFV8bMuX-tkClQrJObLkSsrDEQE&libraries=places&callback=initMap" async defer></script>
+</head>
+<body>
+  <!--Header Container-->
+  <header class="header">
+      <p class="page-title">Veggie <span class="vegan-highlight">Maps</span></p>
+  </header>
+
+  <!--Search/Autocomplete Container-->
+  <div class="search">
+    <h2 class="search-title">Find your next Restaurant!</h2>
+    <input type="text" placeholder="Type location here..." class="location-input" id="location-input">
+    <div id="map"></div>
+  </div>
+
+  <!--Footer Container-->
+  <div class="footer-wrapper">
+    <footer>
+      <p class="footer-title">Super Practical ©2018</p>
+      <div class="social-media">
+        <a href="https://www.reddit.com/r/superpractical/" class="fa fa-reddit"></a>
+        <a href="https://twitter.com/superpracticalc" class="fa fa-twitter"></a>
+        <a href="https://www.instagram.com/superpractical/" class="fa fa-instagram"></a>
+      </div>
+    </footer>
+    <!-- <a href="contact.html" class="contact-us">CONTACT US!</a> -->
+  </div>
+
+</body>
+</html>
